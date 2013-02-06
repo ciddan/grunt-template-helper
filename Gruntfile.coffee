@@ -10,16 +10,45 @@ module.exports = (grunt) ->
         src: ['./tasks/template.js']
 
     template:
-      files:
-        expand: true
-        cwd:  './test/source'
-        src:  '*.template'
-        ext:  '.html'
-        dest: './test/actual'
-      options:
-        data:
-          message: 'Hello'
-          class: 'foo'
+      single:
+        files:
+          'test/actual/main.html': 'test/source/main.template'
+        options:
+          data:
+            message: 'Single'
+            class: 'foo'
+      concat:
+        files:
+          'test/actual/concat.html': ['test/source/concat1.template', 'test/source/concat2.template']
+        options:
+          data:
+            message: 'Concat'
+            class: 'foo'
+      wrap:
+        files:
+          'test/actual/wrapped.html': 'test/source/main.template'
+        options:
+          data:
+            message: 'Wrap'
+            class: 'foo'
+          wrap:
+            banner: '<wrapped>\n'
+            footer: '\n</wrapped>'
+      advWrap:
+        files:
+          'test/actual/wrappedAdv.html': 'test/source/main.template'
+        options:
+          data:
+            message: 'Wrap'
+            class: 'foo'
+          wrap:
+            banner: '<wrapped id="#{0}">\n'
+            footer: '\n</wrapped>'
+            inject: [{
+              prop: 'dest'
+              rem:  'test/'
+            }]
+
 
     coffeelintOptions:
       no_trailing_whitespace:
@@ -46,14 +75,13 @@ module.exports = (grunt) ->
 
   # Load plugin tasks
   grunt.loadNpmTasks 'grunt-coffeelint'
-  grunt.loadNpmTasks 'grunt-simple-mocha'
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
 
   grunt.registerTask 'mocha', 'run mocha', () ->
     done = grunt.task.current.async()
     require('child_process').exec(
-      'mocha --compilers coffee:coffee-script -R list'
+      'mocha --compilers coffee:coffee-script -R nyan'
       , (err, stdout) ->
         grunt.log.write stdout
         done err
