@@ -19,7 +19,10 @@ module.exports = (grunt) ->
             class: 'foo'
       concat:
         files:
-          'test/actual/concat.html': ['test/source/concat1.template', 'test/source/concat2.template']
+          'test/actual/concat.html': [
+            'test/source/concat1.template',
+            'test/source/concat2.template'
+          ]
         options:
           data:
             message: 'Concat'
@@ -40,6 +43,23 @@ module.exports = (grunt) ->
         options:
           data:
             message: 'Wrap'
+            class: 'foo'
+          wrap:
+            banner: '<wrapped id="#{0}">\n'
+            footer: '\n</wrapped>'
+            inject: [{
+              prop: 'dest'
+              rem:  'test/'
+            }]
+      concatWrap:
+        files:
+          'test/actual/wrappedConcat.html': [
+            'test/source/concat1.template',
+            'test/source/concat2.template'
+          ]
+        options:
+          data:
+            message: 'WrapConcat'
             class: 'foo'
           wrap:
             banner: '<wrapped id="#{0}">\n'
@@ -92,5 +112,5 @@ module.exports = (grunt) ->
     'coffeelint'
     'template'
     'mocha'
-    'clean'
+    
   ]

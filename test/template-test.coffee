@@ -44,3 +44,11 @@ describe 'Task template', ->
     actual = grunt.file.read './test/actual/wrappedAdv.html'
 
     assert.strictEqual actual, expected
+
+  it 'should wrap fragments individually when concatenating and wrapping', ->
+    assert.isTrue grunt.file.exists './test/actual/wrappedConcat.html'
+
+    expected = grunt.file.read './test/expected/wrappedConcat.html'
+    actual = grunt.file.read './test/actual/wrappedConcat.html'
+
+    assert.strictEqual actual, expected
