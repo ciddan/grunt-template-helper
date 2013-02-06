@@ -37,5 +37,8 @@
   "keywords": [
     "gruntplugin",
     "grunttemplate"
-  ]
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  }
 }

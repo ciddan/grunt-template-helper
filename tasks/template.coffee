@@ -1,8 +1,6 @@
 'use strict'
 
 module.exports = (grunt) ->
-  path = require 'path'
-
   grunt.registerMultiTask 'template', 'Process grunt template files', () ->
     done = grunt.task.current.async()
     helpers = require('grunt-lib-contrib').init grunt
