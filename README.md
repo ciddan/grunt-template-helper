@@ -33,7 +33,11 @@ Wrap the template with a banner and footer.
 Type: `Object`
 Default: `{}`
 
-It is possible to inject file-path related data into the banner or footer of the wrapper. This is useful if you're wrapping your template with a script-tag, such as `<script type="text/ng-template" src="path/of/view.html">`. At the moment there are two values that are available to inject: `'src'` and `'dest'`. `'src'` represents the path to the template file, `'dest'` the path to the processed output file. Should you want to remove any part of the `'src'` or `'dest'` paths you can do so by specifying the `rem` property. The injection points are specified using positional markers, as such: `foo #{0} bar #{1}`.
+It is possible to inject file-path related data into the banner or footer of the wrapper. This is useful if you're wrapping your template with a script-tag, such as `<script type="text/ng-template" src="path/of/view.html">`. At the moment there are two values that are available to inject: `'src'` and `'dest'`. `'src'` represents the path to the template file, `'dest'` the path to the processed output file. The injection points are specified using positional markers, as such: `foo #{0} bar #{1}`.
+
+Should you want to remove any part of the `'src'` or `'dest'` paths you can do so by specifying the `rem` property.
+
+Additionally, you can substring replace any number of parts of the injected string by specifying the `repl` property as a list of key/value pairs.
 
 ### Usage Examples
 
@@ -52,7 +56,10 @@ template: {
           prop: 'src'
         }, {
           prop: 'dest',
-          rem:  '/unwanted/path'
+          rem:  '/unwanted/path',
+          repl: {
+            ".wrongExtension": ".rightExtension"
+          }
         }]
       }
     },

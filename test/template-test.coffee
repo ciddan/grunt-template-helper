@@ -52,3 +52,11 @@ describe 'Task template', ->
     actual = grunt.file.read './test/actual/wrappedConcat.html'
 
     assert.strictEqual actual, expected
+
+  it 'should be able to replace part of an injected value', ->
+    assert.isTrue grunt.file.exists './test/actual/wrappedReplace.html'
+
+    expected = grunt.file.read './test/expected/wrappedReplace.html'
+    actual = grunt.file.read './test/actual/wrappedReplace.html'
+
+    assert.strictEqual actual, expected

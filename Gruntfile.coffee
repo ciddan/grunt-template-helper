@@ -68,6 +68,22 @@ module.exports = (grunt) ->
               prop: 'dest'
               rem:  'test/'
             }]
+      advWrapReplace:
+        files:
+          'test/actual/wrappedReplace.html': 'test/source/main.template'
+        options:
+          data:
+            message: 'WrapReplace'
+            class: 'foo'
+          wrap:
+            banner: '<wrapped id="#{0}">\n'
+            footer: '\n</wrapped>'
+            inject: [{
+              prop: 'src'
+              rem:  'test/'
+              repl:
+                ".template": ".html"
+            }]
 
 
     coffeelintOptions:
@@ -101,7 +117,7 @@ module.exports = (grunt) ->
   grunt.registerTask 'mocha', 'run mocha', () ->
     done = grunt.task.current.async()
     require('child_process').exec(
-      'mocha --compilers coffee:coffee-script -R nyan'
+      'mocha --compilers coffee:coffee-script -R spec'
       , (err, stdout) ->
         grunt.log.write stdout
         done err
@@ -112,5 +128,5 @@ module.exports = (grunt) ->
     'coffeelint'
     'template'
     'mocha'
-    
+    'clean'
   ]

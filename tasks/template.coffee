@@ -31,22 +31,27 @@ module.exports = (grunt) ->
 
     try
       wrap = options.wrap?.banner? and options.wrap?.footer?
+      inject = wrap and options.wrap.inject?.length >= 1
+
       processed = grunt.template.process src, options
       processed = "#{options.wrap.banner}#{processed}#{options.wrap.footer}" if wrap
 
-      if wrap and options.wrap.inject? and options.wrap.inject.length >= 1
+      if wrap and inject
         for inj, pos in options.wrap.inject
-          inj.rem ?= ''
+          inj.rem  ?= ''
+          inj.repl ?= {}
 
           switch inj.prop
             when 'src'
               inject = filepath.replace inj.rem, ''
-              processed = processed.replace('#{' + pos + '}', inject)
             when 'dest'
               inject = dest.replace inj.rem, ''
-              processed = processed.replace('#{' + pos + '}', inject)
+            else
+              inject = '#{' + pos + '}'
+              grunt.log.warn 'Invalid inject property supplied, not replacing positional marker'
 
-
+          inject = inject.replace k, v for k, v of inj.repl
+          processed = processed.replace('#{' + pos + '}', inject)
 
       return processed
     catch e
