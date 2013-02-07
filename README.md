@@ -53,12 +53,12 @@ template: {
         banner: '<script type="text/ng-template" from="#{0}" to="#{1}"></script>',
         footer: '</script>',
         inject: [{
-          prop: 'src'
-        }, {
-          prop: 'dest',
-          rem:  '/unwanted/path',
-          repl: {
-            ".wrongExtension": ".rightExtension"
+            prop: 'src'
+          }, {
+            prop: 'dest',
+            rem:  '/unwanted/path',
+            repl: {
+              ".wrongExtension": ".rightExtension"
           }
         }]
       }
