@@ -33,8 +33,8 @@
     "grunt-contrib-coffee": "0.4.0rc7",
     "chai": ">= 1.5.x"
   },
-  "_id": "grunt-template-helper@0.1.0",
-  "_from": "grunt-template-helper0.0.2",
+  "_id": "grunt-template-helper@0.1.5",
+  "_from": "grunt-template-helper0.1.0",
   "keywords": [
     "gruntplugin",
     "grunttemplate",
