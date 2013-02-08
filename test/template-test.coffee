@@ -52,3 +52,27 @@ describe 'Task template', ->
     actual = grunt.file.read './test/actual/wrappedConcat.html'
 
     assert.strictEqual actual, expected
+
+  it 'should be able to replace part of an injected value', ->
+    assert.isTrue grunt.file.exists './test/actual/wrappedReplace.html'
+
+    expected = grunt.file.read './test/expected/wrappedReplace.html'
+    actual = grunt.file.read './test/actual/wrappedReplace.html'
+
+    assert.strictEqual actual, expected
+
+  it 'should be able to minify html output', ->
+    assert.isTrue grunt.file.exists './test/actual/min.html'
+
+    expected = grunt.file.read './test/expected/min.html'
+    actual = grunt.file.read './test/actual/min.html'
+
+    assert.strictEqual actual, expected
+
+  it 'should be able to minify a css file', ->
+    assert.isTrue grunt.file.exists './test/actual/foo.min.css'
+
+    expected = grunt.file.read './test/expected/foo.min.css'
+    actual = grunt.file.read './test/actual/foo.min.css'
+
+    assert.strictEqual actual, expected
