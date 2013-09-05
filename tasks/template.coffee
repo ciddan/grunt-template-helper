@@ -31,7 +31,11 @@ module.exports = (grunt) ->
     )
 
   minify = (src, options) ->
-    options.minify.pretty ?= { mode: 'minify', lang: 'markup', html: 'html-yes' }
+    options.minify.pretty ?=
+      mode: 'minify'
+      lang: 'markup'
+      html: 'html-yes'
+
     options.minify.pretty.source = src
 
     try
@@ -51,7 +55,9 @@ module.exports = (grunt) ->
       inject = wrap and options.wrap.inject?.length >= 1
 
       processed = grunt.template.process src, options
-      processed = "#{options.wrap.banner}#{processed}#{options.wrap.footer}" if wrap
+
+      if wrap
+        processed = "#{options.wrap.banner}#{processed}#{options.wrap.footer}"
 
       if wrap and inject
         for inj, pos in options.wrap.inject
@@ -65,7 +71,10 @@ module.exports = (grunt) ->
               inject = dest.replace inj.rem, ''
             else
               inject = '#{' + pos + '}'
-              grunt.log.warn 'Invalid inject property supplied, not replacing positional marker'
+              grunt.log.warn(
+                "Invalid inject property supplied, not
+                 replacing positional marker"
+              )
 
           inject = inject.replace k, v for k, v of inj.repl
           processed = processed.replace('#{' + pos + '}', inject)

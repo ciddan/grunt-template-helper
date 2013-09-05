@@ -1,7 +1,7 @@
 {
   "name": "grunt-template-helper",
   "description": "Grunt template processor and wrapper.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "homepage": "https://github.com/ciddan/grunt-template-helper",
   "author": {
     "name": "Mikael Selander",
@@ -23,17 +23,18 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "grunt-lib-contrib": "~0.4.0",
-    "prettydiff": "~0.0.133"
+    "grunt-lib-contrib": "0.4.x",
+    "prettydiff": "~0.0.173"
   },
   "devDependencies": {
     "grunt": "0.4.x",
-    "grunt-coffeelint": ">= 0.0.4",
-    "grunt-contrib-clean": "0.4.0rc6",
-    "grunt-contrib-coffee": "0.4.0rc7",
-    "chai": ">= 1.5.x"
+    "grunt-coffeelint": ">= 0.0.7",
+    "grunt-contrib-clean": "0.5.x",
+    "grunt-contrib-coffee": "0.7.x",
+    "chai": ">= 1.7.x",
+    "coffee-script": "1.6.x"
   },
-  "_id": "grunt-template-helper@0.1.5",
+  "_id": "grunt-template-helper@0.1.6",
   "_from": "grunt-template-helper0.1.0",
   "keywords": [
     "gruntplugin",
