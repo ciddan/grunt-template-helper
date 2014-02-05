@@ -134,7 +134,7 @@ module.exports = (grunt) ->
   grunt.registerTask 'mocha', 'run mocha', () ->
     done = grunt.task.current.async()
     require('child_process').exec(
-      'mocha --compilers coffee:coffee-script -R spec'
+      'mocha --compilers coffee:coffee-script/register -R spec'
       , (err, stdout) ->
         grunt.log.write stdout
         done err
