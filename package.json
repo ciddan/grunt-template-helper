@@ -1,7 +1,7 @@
 {
   "name": "grunt-template-helper",
   "description": "Grunt template processor and wrapper.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "homepage": "https://github.com/ciddan/grunt-template-helper",
   "author": {
     "name": "Mikael Selander",
@@ -17,13 +17,13 @@
   },
   "main": "Gruntfile.js",
   "engines": {
-    "node": "~0.10.0"
+    "node": "^4.0.0"
   },
   "scripts": {
     "test": "grunt test"
   },
   "dependencies": {
-    "prettydiff": "1.14.7"
+    "prettydiff": "1.15.16"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
@@ -33,7 +33,7 @@
     "chai": "~3.4.0",
     "coffee-script": "~1.10.0"
   },
-  "_id": "grunt-template-helper@0.2.0",
+  "_id": "grunt-template-helper@0.2.1",
   "_from": "grunt-template-helper0.1.0",
   "keywords": [
     "gruntplugin",
