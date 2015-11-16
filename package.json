@@ -33,7 +33,7 @@
     "chai": "~3.4.0",
     "coffee-script": "~1.10.0"
   },
-  "_id": "grunt-template-helper@0.2.1",
+  "_id": "grunt-template-helper@0.2.2",
   "_from": "grunt-template-helper0.1.0",
   "keywords": [
     "gruntplugin",
